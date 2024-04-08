@@ -146,6 +146,18 @@ const Header = () => {
                     >
                         Register
                     </Link>
+                    <Link
+                        to="/contact"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    >
+                        Contact
+                    </Link>
+                    <Link
+                        to="/about"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    >
+                        About
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -15,9 +15,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-    <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-      <div className="md:flex md:items-center mb-6">
+    <div className="bg-gray-100 flex items-center justify-center h-screen content-center">
+     
+    <form className="w-full max-w-sm " onSubmit={handleSubmit}>
+    <h2 className=' text-2xl mb-7 ms-12 font-bold justify-center flex'>LOGIN</h2>
+     <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3">
           <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
             Email
@@ -53,7 +55,7 @@ const LoginPage = () => {
         <div className="md:w-1/3"></div>
         <div className="md:w-2/3">
           <button
-            className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline-purple focus:outline-none text-white font-bold py-2 px-4 rounded"
+            className="w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline-purple focus:outline-none text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
             Login
