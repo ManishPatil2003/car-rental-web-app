@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setIsLoggedIn(true);
+        }
+        
+    }, []);
     return (
         <nav className="bg-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +26,7 @@ const Header = () => {
                             </Link>
                         </div>
                         <div className="hidden md:block">
-                            <div className="ml-10 flex items-baseline space-x-4">
+                            <div className="ml-10 flex items-baseline space-x-4"> 
                                 <Link
                                     to="/"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -44,26 +51,36 @@ const Header = () => {
                                 >
                                     Contact
                                 </Link>
-                                <Link
-                                    to="/account"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                >
-                                    Account
-                                </Link>
                                
-                                <Link
-                                    to="/login"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Login
-                                </Link>
-                                <Link
-                                    to="/register"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Register
-                                </Link>
-                               
+
+                                {isLoggedIn ? (
+                                    <div>
+                                        <Link className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' to="/profile">Profile</Link>
+                                        <button
+                                        className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' onClick={() => {
+                                            localStorage.removeItem('user');
+                                            setIsLoggedIn(false);
+                                        }}>Logout</button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <Link
+                                            to="/login"
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                        >
+                                            Login
+                                        </Link>
+                                        <Link
+                                            to="/register"
+                                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                        >
+                                            Register
+                                        </Link>
+                                    </div>
+                                )}
+
+
+
                             </div>
                         </div>
                     </div>
